@@ -33,7 +33,20 @@ app.get("/health", async (req, res) => {
   }
 });
 
-
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Welcome to the Product API",
+    version: "1.0.0",
+    endpoints: {
+      categories: "/api/categories",
+      products: "/api/products",
+      health: "/health"
+    },
+    author: "Md Souad Al Kabir",
+    status: "API is running smoothly"
+  });
+});
 // === ERROR HANDLER ===
 app.use((err, req, res, next) => {
   console.error(err);
